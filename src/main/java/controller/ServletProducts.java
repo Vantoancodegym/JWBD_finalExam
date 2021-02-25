@@ -23,9 +23,40 @@ public class ServletProducts extends HttpServlet {
             case "create":
                 showFormCreate(request,response);
                 break;
+            case "delete":
+                deleteProduct(request,response);
+                break;
+            case "edit":
+                showFormEdit(request,response);
+                break;
             default:
                 showList(request,response);
                 break;
+        }
+
+    }
+
+    private void showFormEdit(HttpServletRequest request, HttpServletResponse response) {
+        int id= Integer.parseInt(request.getParameter("id"));
+        Product product=productService.findById(id);
+        request.setAttribute("product",product);
+        RequestDispatcher dispatcher=request.getRequestDispatcher("edit.jsp");
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) {
+        int id= Integer.parseInt(request.getParameter("id"));
+        productService.delete(id);
+        try {
+            response.sendRedirect("/products");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
     }
