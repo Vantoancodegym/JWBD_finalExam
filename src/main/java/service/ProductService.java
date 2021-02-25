@@ -29,6 +29,21 @@ public class ProductService implements IProductService{
 
         return connection;
     }
+    public String getTypeProduct(int typeId){
+        String type="";
+        Connection connection=getConnetion();
+        try {
+            CallableStatement callableStatement=connection.prepareCall("{call get_type_by_id(?,?)}");
+            callableStatement.setInt(1,typeId);
+            callableStatement.registerOutParameter(2, Types.VARCHAR);
+            callableStatement.execute();
+            type=callableStatement.getString(2);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return type;
+    }
 
     @Override
     public List<Product> findAll() {

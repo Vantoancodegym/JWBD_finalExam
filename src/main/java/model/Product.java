@@ -1,5 +1,7 @@
 package model;
 
+import service.ProductService;
+
 public class Product {
     private int id;
     private String name;
@@ -16,6 +18,9 @@ public class Product {
         this.color = color;
         this.description = description;
         this.category_id = category_id;
+    }
+    public String getType(){
+        return new ProductService().getTypeProduct(category_id);
     }
 
     public Product(int id, String name, int price, int amount, String color, String description, int category_id) {
