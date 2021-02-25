@@ -126,7 +126,5 @@ public class ProductService implements IProductService{
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
-
     }
 }
