@@ -142,4 +142,25 @@ public class ProductService implements IProductService{
             throwables.printStackTrace();
         }
     }
+    public Product findByName(String name){
+        Product product =null;
+        Connection connection=getConnetion();
+        try {
+            PreparedStatement preparedStatement=connection.prepareStatement("select * from product where name=?");
+            preparedStatement.setString(1,name);
+            ResultSet resultSet=preparedStatement.executeQuery();
+            while (resultSet.next()){
+                int id=resultSet.getInt("id");
+                int price=resultSet.getInt("price");
+                int amount=resultSet.getInt("amount");
+                String color=resultSet.getString("color");
+                String description=resultSet.getString("description");
+                int category_id=resultSet.getInt("category_id");
+                product=new Product(id,name,price,amount,color,description,category_id);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return product;
+    }
 }

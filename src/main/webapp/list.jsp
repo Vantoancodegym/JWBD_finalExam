@@ -27,6 +27,10 @@
 <div class="container">
     <div class="row">
         <h2 class="text-center">Products list</h2>
+        <form method="post" action="/products?action=find">
+            <input name="name" placeholder="input name">
+            <input type="submit" value="SEARCH">
+        </form>
     </div>
 
     <div class="row">

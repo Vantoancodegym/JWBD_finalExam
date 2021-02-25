@@ -96,8 +96,31 @@ public class ServletProducts extends HttpServlet {
             case "edit":
                 edit(request,response);
                 break;
+            case "find":
+                find(request,response);
+                break;
 
         }
+    }
+
+    private void find(HttpServletRequest request, HttpServletResponse response) {
+        String name=request.getParameter("name");
+        Product product=productService.findByName(name);
+        RequestDispatcher dispatcher;
+        if (product==null){
+            dispatcher=request.getRequestDispatcher("notFound.jsp");
+        }else {
+            dispatcher=request.getRequestDispatcher("findResult.jsp");
+            request.setAttribute("product",product);
+        }
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void edit(HttpServletRequest request, HttpServletResponse response) {
