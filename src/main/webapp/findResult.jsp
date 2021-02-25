@@ -51,7 +51,7 @@
                         <td>${product.getAmount()}</td>
                         <td>${product.getColor()}</td>
                         <td>${product.getDescription()}</td>
-                        <td>${product.getType()}</td>
+                        <td>${product.getCategory_type()}</td>
                         <td rowspan="2"><a href="/products">BACK</a></td>
                     </tr>
                     </tbody>

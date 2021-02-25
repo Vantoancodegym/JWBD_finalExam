@@ -10,8 +10,29 @@ public class Product {
     private String color;
     private String description;
     private int category_id;
+    private String category_type;
+
+    public Product(int id, String name, int price, int amount, String color, String description, String category_type) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.amount = amount;
+        this.color = color;
+        this.description = description;
+        this.category_type = category_type;
+    }
 
     public Product(String name, int price, int amount, String color, String description, int category_id) {
+        this.name = name;
+        this.price = price;
+        this.amount = amount;
+        this.color = color;
+        this.description = description;
+        this.category_id = category_id;
+    }
+
+    public Product(int id, String name, int price, int amount, String color, String description, int category_id) {
+        this.id = id;
         this.name = name;
         this.price = price;
         this.amount = amount;
@@ -23,14 +44,12 @@ public class Product {
         return new ProductService().getTypeProduct(category_id);
     }
 
-    public Product(int id, String name, int price, int amount, String color, String description, int category_id) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.amount = amount;
-        this.color = color;
-        this.description = description;
-        this.category_id = category_id;
+    public String getCategory_type() {
+        return category_type;
+    }
+
+    public void setCategory_type(String category_type) {
+        this.category_type = category_type;
     }
 
     public int getId() {

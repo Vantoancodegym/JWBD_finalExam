@@ -53,6 +53,7 @@
                         <td><input name="color" value="${product.getColor()}"></td>
                         <td><input name="description" value="${product.getDescription()}"></td>
                         <td><select name="category">
+                            <option>${product.getCategory_type()}</option>
                             <option>computer</option>
                             <option>TV</option>
                             <option>mobile</option>

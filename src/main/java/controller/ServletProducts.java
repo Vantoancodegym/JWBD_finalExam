@@ -38,7 +38,7 @@ public class ServletProducts extends HttpServlet {
 
     private void showFormEdit(HttpServletRequest request, HttpServletResponse response) {
         int id= Integer.parseInt(request.getParameter("id"));
-        Product product=productService.findById(id);
+        Product product=productService.findByIdByJoin(id);
         request.setAttribute("product",product);
         RequestDispatcher dispatcher=request.getRequestDispatcher("edit.jsp");
         try {
@@ -73,7 +73,7 @@ public class ServletProducts extends HttpServlet {
     }
 
     private void showList(HttpServletRequest request, HttpServletResponse response) {
-        List<Product> list=productService.findAll();
+        List<Product> list=productService.findAllByJoin();
         request.setAttribute("list",list);
         RequestDispatcher dispatcher=request.getRequestDispatcher("list.jsp");
         try {
@@ -105,7 +105,7 @@ public class ServletProducts extends HttpServlet {
 
     private void find(HttpServletRequest request, HttpServletResponse response) {
         String name=request.getParameter("name");
-        Product product=productService.findByName(name);
+        Product product=productService.findByNameByJoin(name);
         RequestDispatcher dispatcher;
         if (product==null){
             dispatcher=request.getRequestDispatcher("notFound.jsp");
