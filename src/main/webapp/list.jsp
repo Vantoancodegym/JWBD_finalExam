@@ -27,12 +27,11 @@
 <div class="container">
     <div class="row">
         <h2 class="text-center">Products list</h2>
-        <form method="post" action="/products?action=find">
+        <form method="post" action="/products?action=find" style="margin-left: 20px">
             <input name="name" placeholder="input name">
             <input type="submit" value="SEARCH">
         </form>
     </div>
-
     <div class="row">
 
         <div class="col-md-12">
@@ -60,9 +59,9 @@
                     <td>${product.getColor()}</td>
                     <td>${product.getDescription()}</td>
                     <td>${product.getType()}</td>
-                    <td><a href="/products?action=edit&id=${product.getId()}">Edit</a></td>
+                    <td><a href="/products?action=edit&id=${product.getId()}"><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></a></td>
                     <td><a href="/products?action=delete&id=${product.getId()}"
-                    onclick="return confirm('Do you want to delete')">Delete</a></td>
+                    onclick="return confirm('Do you want to delete')"><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></a></td>
                 </tr>
                 </c:forEach>
 
