@@ -80,16 +80,53 @@ public class ProductService implements IProductService{
 
     @Override
     public void create(Product product) {
-
+        Connection connection=getConnetion();
+        try {
+            PreparedStatement preparedStatement=connection.prepareStatement("insert into " +
+                    "product(name,price,amount,color,description,category_id) values (?,?,?,?,?,?)");
+            preparedStatement.setString(1,product.getName());
+            preparedStatement.setInt(2,product.getPrice());
+            preparedStatement.setInt(3,product.getAmount());
+            preparedStatement.setString(4,product.getColor());
+            preparedStatement.setString(5,product.getDescription());
+            preparedStatement.setInt(6,product.getCategory_id());
+            preparedStatement.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     @Override
     public void update(Product product) {
+        Connection connection=getConnetion();
+        try {
+            PreparedStatement preparedStatement=connection.prepareStatement("update product set name=?,price=?," +
+                    "amount=?, color=?, description=?, category_id=? where id=?;");
+            preparedStatement.setString(1,product.getName());
+            preparedStatement.setInt(2,product.getPrice());
+            preparedStatement.setInt(3,product.getAmount());
+            preparedStatement.setString(4,product.getColor());
+            preparedStatement.setString(5,product.getDescription());
+            preparedStatement.setInt(6,product.getCategory_id());
+            preparedStatement.setInt(7,product.getId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
 
     }
 
     @Override
     public void delete(int id) {
+        Connection connection=getConnetion();
+        try {
+            PreparedStatement preparedStatement=connection.prepareStatement("delete from product where id=?");
+            preparedStatement.setInt(1,id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
 
     }
 }
