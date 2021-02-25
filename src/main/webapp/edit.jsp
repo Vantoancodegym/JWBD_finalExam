@@ -57,7 +57,7 @@
                             <option>TV</option>
                             <option>mobile</option>
                         </select></td>
-                        <td rowspan="2"><input type="submit" value="CREATE"></td>
+                        <td rowspan="2"><input type="submit" value="EDIT"></td>
                     </tr>
 
                     </tbody>

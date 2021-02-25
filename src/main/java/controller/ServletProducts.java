@@ -93,7 +93,39 @@ public class ServletProducts extends HttpServlet {
             case "create":
                 create(request,response);
                 break;
+            case "edit":
+                edit(request,response);
+                break;
 
+        }
+    }
+
+    private void edit(HttpServletRequest request, HttpServletResponse response) {
+        int id= Integer.parseInt(request.getParameter("id"));
+        String name=request.getParameter("name");
+        int price= Integer.parseInt(request.getParameter("price"));
+        int amount=Integer.parseInt(request.getParameter("amount"));
+        String color=request.getParameter("color");
+        String description=request.getParameter("description");
+        String category=request.getParameter("category");
+        int category_id=0;
+        switch (category){
+            case "computer":
+                category_id=2;
+                break;
+            case "TV":
+                category_id=3;
+                break;
+            case "mobile":
+                category_id=1;
+                break;
+        }
+        Product product=new Product(id,name,price,amount,color,description,category_id);
+        productService.update(product);
+        try {
+            response.sendRedirect("/products");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
