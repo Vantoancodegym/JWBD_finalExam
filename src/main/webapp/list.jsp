@@ -43,6 +43,7 @@
                     <th>Color</th>
                     <th>Description</th>
                     <th>Category</th>
+                    <th colspan="2"><a href="/products?action=create">CREATE NEW</a></th>
                 </tr>
                 </thead>
 
@@ -68,7 +69,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="false">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
